@@ -3,7 +3,124 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>QQ 音乐</title>
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
 	</head>
 	<body>
+		<header>
+			<h1>QQ 音乐</h1>
+			<img src="images/logo.png" alt="Logo" id="logo"/>
+		</header>
+		<nav class="mod_nav">
+			<a href="#" class="current" data-role="tab" data-view=".recom_group">推荐</a>
+			<a href="#" data-role="tab" data-view=".toplist_group">排行榜</a>
+			<a href="#" data-role="tab" data-view=".search_group">搜索</a>
+		</nav>
+		<div class="content_wrapper">
+			<div class="recom_group">
+				<div class="qq-slider" id="slider">
+					<!--轮播-->
+				</div>
+				<div class="qq_twocol_list qq_twocol_list_normal">
+					<h2 class="list_title">电台</h2>
+					<ul id="radio_wrapper" class="list_container">
+						<li>
+							<a class="list_main" href="#l">
+								<div class="list_media">
+									<img src="images/qg.jpg"/>
+									<span class="icon icon_play"></span>
+								</div>
+								<div class="list_info">
+									<h3 class="list_tit">
+										一个人的情歌
+									</h3>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a class="list_main" href="#l">
+								<div class="list_media">
+									<img src="images/hot.jpg"/>
+									<span class="icon icon_play"></span>
+								</div>
+								<div class="list_info">
+									<h3 class="list_tit">
+										热歌
+									</h3>
+								</div>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="qq_twocol_list qq_twocol_list_special">
+					<h2 class="list_title">电台</h2>
+					<ul id="radio_wrapper" class="list_container">
+						<li>
+							<a class="list_main" href="#l">
+								<div class="list_media">
+									<img src="images/qg.jpg"/>
+									<span class="icon icon_play"></span>
+								</div>
+								<div class="list_info">
+									<h3 class="list_tit">
+										一个人的情歌
+									</h3>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a class="list_main" href="#l">
+								<div class="list_media">
+									<img src="images/hot.jpg"/>
+									<span class="icon icon_play"></span>
+								</div>
+								<div class="list_info">
+									<h3 class="list_tit">
+										热歌
+									</h3>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a class="list_main" href="#l">
+								<div class="list_media">
+									<img src="images/qg.jpg"/>
+									<span class="icon icon_play"></span>
+								</div>
+								<div class="list_info">
+									<h3 class="list_tit">
+										一个人的情歌
+									</h3>
+								</div>
+							</a>
+						</li>
+						<li>
+							<a class="list_main" href="#l">
+								<div class="list_media">
+									<img src="images/hot.jpg"/>
+									<span class="icon icon_play"></span>
+								</div>
+								<div class="list_info">
+									<h3 class="list_tit">
+										热歌
+									</h3>
+								</div>
+							</a>
+						</li>
+					</ul>
+					
+				</div>
+				
+			</div>
+			<div class="toplist_group tab_content" >
+				排行榜
+			</div>
+			<div class="search_group tab_content">
+				搜索
+			</div>
+		</div>
+		
+		<script src="Scripts/slider.js" type="text/javascript" charset="utf-8"></script>
+		<script src="Scripts/Tab.js" type="text/javascript" charset="utf-8"></script>
+		<script src="Scripts/app.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 </html>

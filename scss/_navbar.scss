@@ -1,0 +1,33 @@
+.mod_nav {
+    display: flex;
+    height: 60px;
+    a{
+        flex: 1;
+        display: block;
+        position: relative;
+        height: $nav-a-height;
+        line-height: $nav-a-height;
+        color: $nav-a-color;
+        overflow: hidden;
+        text-align: center;
+        font-size: 40px;
+        &.current{
+            color: $nav-a-current;
+        }
+        &.current::after{
+            content: "";
+            position: absolute;
+            display: block;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: $nav-a-current;
+        }
+    }
+}
+
+.tab_content{
+    display: none;
+}
+
