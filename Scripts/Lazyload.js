@@ -17,6 +17,7 @@
 // 	
 // 	imgs.foreach(img=>observer.observe(img))
  	
+ 
  	window.addEventListener('scroll',onscroll)
  	window.dispatchEvent(new Event('scroll'))
  	let onscroll=throttle(fucntion(){
