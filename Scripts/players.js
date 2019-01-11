@@ -1,3 +1,4 @@
+//进度条
 class ProgressBar{
 	constructor(el,duration,start){
 		this.$el=el;
@@ -61,7 +62,7 @@ class ProgressBar{
 	}
 	
 }
-
+//播放音乐
 class Musicplay{
 	constructor(el){
 		this.$el=el;
@@ -77,6 +78,7 @@ class Musicplay{
 			this.$audio.play();
 			
 		})
+	}
 	
 	handleEvent(){
 		let traget=event.target;
@@ -110,4 +112,68 @@ class Musicplay{
 		let coverUrl=albumcoverUrl
 	}
 }
-//尝试修改
+
+//歌词
+class lyricsplayer{
+	contructor(el,audio){
+		this.$el=el;
+		this.$el.innerHTML='';
+		this.$audio=audio;
+		this.text='';
+		this.index=0;
+		this.lyrics=[];
+		this.elapsed=0;
+		this.reset(thsi.text);
+	}
+	//开始
+	start(){
+		this.pause();
+		this.intervalId=setInterval(this.update().bind(this),1000)
+	}
+	//暂停
+	pause(){
+		clearInterval(this.interrvalId);
+	}
+	//
+	update(){
+		this.elapsed=Math.round(thi.$audio?this.$audio.currentTime:this.elapsed+1)
+		
+		
+		if(this.index>2){
+			let y=-(this.index-2)*thsi.LINE_HEIGHT;
+			this.$lines.style.transform=`translateY(${y}px)`;
+		}
+		
+		
+	}
+	//加载HTML
+	rander(){
+		
+	}
+	
+	reset(){
+		this.pause();
+		this.index=0;
+		this.elapsed=0;
+		//[00:00:00]sjkjk
+		if(text){
+			this.text=this.formatText(text)||'';
+			this.lyrics=this.text.match(/^\[\d{2}:\d{2}\.\d{2}\](.+)$/gm)||[];
+			if(this.lyrics.length) this.render();
+		}
+		
+		
+	}
+
+	//添加歌词文本
+	formatText(text){
+		let div=document.createElement('div')
+		div.innerHTML=text;
+		return div.innerText
+	}
+	
+}
+
+
+
+

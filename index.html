@@ -2,6 +2,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>QQ 音乐</title>
 		<link rel="stylesheet" type="text/css" href="css/app.css"/>
 	</head>
@@ -22,7 +24,7 @@
 				</div>
 				<div class="qq_twocol_list qq_twocol_list_normal">
 					<h2 class="list_title">电台</h2>
-					<!--<ul id="radio_wrapper" class="list_container">
+					<ul id="radio_wrapper" class="list_container">
 						<li>
 							<a class="list_main" href="#l">
 								<div class="list_media">
@@ -49,11 +51,11 @@
 								</div>
 							</a>
 						</li>
-					</ul>-->
+					</ul>
 				</div>
 				<div class="qq_twocol_list qq_twocol_list_special">
 					<h2 class="list_title">热门歌单</h2>
-					<!--<ul id="radio_wrapper" class="list_container">
+					<ul id="radio_wrapper" class="list_container">
 						<li>
 							<a class="list_main" href="#l">
 								<div class="list_media">
@@ -106,7 +108,7 @@
 								</div>
 							</a>
 						</li>
-					</ul>-->
+					</ul>
 					
 				</div>
 				
@@ -118,7 +120,56 @@
 				搜索
 			</div>
 		</div>
-		
+		<div class="player ">
+			<div class="player_container">
+				<div class="player_header">
+					<!--头部-->
+					<img class="album_cover" src="https://y.gtimg.cn/music/photo_new/T002R300x300M000000cc1cw4Gysl3.jpg?max_age=2592000"/>
+					<div class="song_info">
+						<h3 class="song_name">进阶</h3>
+						<p class="song_artist">林俊杰  最新专辑</p>
+					</div>
+					<span class="icon_action">
+						立即收听
+					</span>
+				</div>
+				<div class="player_lyrics">
+					<!--歌词-->
+					<div class="player_lyrics_lines">
+						<div class="player_lyrics_line">每一个呼吸都有意义</div>
+						<div class="player_lyrics_line active">每一个呼吸都有意</div>
+						<div class="player_lyrics_line">每一个呼吸都有</div>
+						<div class="player_lyrics_line">每一个呼吸都</div>
+						<div class="player_lyrics_line">每一个呼吸</div>
+						<div class="player_lyrics_line">每一个呼吸都有意义</div>
+						<div class="player_lyrics_line ">每一个呼吸都有意</div>
+						<div class="player_lyrics_line ">每一个呼吸都有意</div>
+						<div class="player_lyrics_line ">每一个呼吸都有意</div>
+					</div>
+				</div>
+				<div class="player_footer">
+					<!--底部-进度条-->
+					<div class="icon_list"></div>
+			        <div class="progress">
+			        	<div class="progress_time progress_elapsed">
+						<!--开始时间-->00:00
+						</div>
+				        <div class="progress_bar">
+				        	<!--进度条-->
+				          <div class="progress_bar_progress"></div>
+				        </div>
+				      	<div class="progress_time progress_duration">
+				      		<!--总时间-->00:00
+				      	</div>
+			        </div>
+			        <div class="actions">
+			          <a href="#" class="btn_download">下载这首歌</a>
+			        </div>
+					
+				</div>
+			</div>
+			<div class="player_background"></div>
+		</div>
 		<script src="Scripts/slider.js" type="text/javascript" charset="utf-8"></script>
 		<script src="Scripts/Tab.js" type="text/javascript" charset="utf-8"></script>
 		<script src="Scripts/app.js" type="text/javascript" charset="utf-8"></script>

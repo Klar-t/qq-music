@@ -1,12 +1,13 @@
+$color-primary: #31c27c;
 
+$header-height:44px;
+$header-background: $color-primary;
 
-$header-height:100px;
-$header-background: #31c27c;
-
-$logo-height:60px;
+$logo-height:25px;
 
 $body-background:#f4f4f4;
 
-$nav-a-height:60px;
+$nav-a-height:40px;
 $nav-a-color: rgba(0,0,0,.6);
-$nav-a-current: #31c27c;
+$nav-a-current: $color-primary;
+$nav-item-active:$color-primary;

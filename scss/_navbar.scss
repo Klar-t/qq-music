@@ -1,6 +1,6 @@
 .mod_nav {
     display: flex;
-    height: 60px;
+    align-items: center;
     a{
         flex: 1;
         display: block;
@@ -10,9 +10,9 @@
         color: $nav-a-color;
         overflow: hidden;
         text-align: center;
-        font-size: 40px;
+        cursor: pointer;
         &.current{
-            color: $nav-a-current;
+            color:  $nav-item-active;
         }
         &.current::after{
             content: "";
@@ -21,8 +21,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 5px;
-            background: $nav-a-current;
+            height: 2px;
+            background: $nav-item-active;
         }
     }
 }

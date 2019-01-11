@@ -1,0 +1,163 @@
+.player{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9;
+    transition: 0.3s;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-100%);
+    &.show{//展示播放器页面
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .player_containerr{
+        z-index: 9;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: rgba(0,0,0,.6);
+    }
+    .player_background{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        background-size: cover;
+        background-position: bottom center;
+        filter: blur(15px);
+        transform: scale(1.15);
+    }
+    
+    .player_header{
+        display: flex;
+        padding: 10px;
+        align-items: center;
+        background: rgba(0,0,0,.1);
+        .icon_action{
+            border: solid 1px #fff;
+            font-size: 12px;
+            border-radius: 40px;
+            padding: 5px;
+            display: block;
+        }
+        .album_cover{
+            width: 80px;
+            height: 80px;
+            display: block;
+            margin-right: 15px;
+        }
+        .song_info{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: calc(100%-150px);
+            .song_name{
+                font-size: 14px;
+                font-weight: normal;
+                color: #fff;
+            }
+            .song_artist{
+                font-size: 12px;
+                color: #fff;
+                margin: 0;
+            }
+        }
+        
+        
+    }
+    .player_lyrics{
+        flex: 1;
+        overflow: hidden;
+        margin: 36px 0 60px 0;
+        color: rgba(255,255,255,.6);
+        max-height: calc(100%-205px);
+        .player_lyrics_lines{
+            overflow: hidden;
+            transform: .5s;
+        }
+        .player_lyrics_line{
+            height: 42px;
+            line-height: 42px;
+            overflow: hidden;
+            padding: 0 15px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 16px;
+            color: #000000;
+            text-align: center;
+        }
+        .active{
+            color: $color-primary;
+        }
+    }
+    .player_footer{
+        position: relative;
+        .icon_list{
+            width: 40px;
+            height: 40px;
+            right: 13px;
+            top: -40px;
+            position: absolute;
+            background-image: url(../images/sprite_play.png);
+            background-repeat: no-repeat;
+            background-size: 40px 380px;
+            background-position: 8px -250px;
+        }
+        .progress{
+            display: flex;
+            align-items: center;
+        }
+        .progress_bar{
+            flex: 1;
+            overflow: hidden;
+            background-color: rgba(255,255,255,.2);
+            .progress_bar_progress{
+                width: 100%;
+                height: 2px;
+                transform: translateX(-50%);
+                background: $color-primary;
+            }
+        }
+        .progress_time{
+            top: 0;
+            z-index: 1;
+            width: 55px;
+            font-size: 12px;
+            color: #808080;
+            line-height: 40px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .actions{
+            height: 65px;
+            margin-top: 10px;
+            .btn_download{
+                position: relative;
+                display: block;
+                height: 45px;
+                line-height: 45px;
+                margin: 0 50px;
+                padding: 0 55px;
+                overflow: hidden;
+                white-space: normal;
+                font-size: 20px;
+                color: #fff;
+                border-radius: 999px;
+                background-color: $color-primary;
+                text-align: center;
+                background-image: url(../images/sprite_play.png);
+                background-repeat: no-repeat;
+                background-size: 43px 380px;
+                background-position: 6px -321px;
+                
+            }
+        }
+    }
+}

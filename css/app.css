@@ -1,23 +1,21 @@
 .qq_twocol_list {
-  margin-left: 20px;
-  margin-right: 20px; }
+  margin: 14px 10px 0 10px; }
   .qq_twocol_list .list_title {
-    font-size: 30px;
+    font-size: 16px;
     color: #000;
     margin-bottom: 11px;
     font-weight: normal; }
   .qq_twocol_list ul {
-    margin-right: -8px;
     overflow: hidden; }
     .qq_twocol_list ul li:nth-of-type(2) {
-      padding-left: 10px; }
+      padding-left: 5px;
+      padding-right: 0; }
     .qq_twocol_list ul li {
       float: left;
       width: 50%;
-      padding-right: 8px;
+      padding-right: 5px;
       margin-bottom: 10px;
-      overflow: hidden;
-      height: 549px; }
+      overflow: hidden; }
       .qq_twocol_list ul li .list_main {
         display: block;
         background: #fff; }
@@ -26,37 +24,49 @@
           margin-bottom: 5px; }
           .qq_twocol_list ul li .list_main .list_media img {
             display: block;
-            width: 100%; }
+            width: 100%;
+            min-height: 145px; }
           .qq_twocol_list ul li .list_main .list_media .icon {
             background-repeat: no-repeat;
-            background-size: 60px 145px;
+            background-size: 24px 60px;
             background-image: url(../images/icon.png); }
           .qq_twocol_list ul li .list_main .list_media .icon_play {
-            height: 60px;
-            bottom: 15px;
-            right: 10px;
-            width: 60px;
+            height: 24px;
+            bottom: 5px;
+            right: 5px;
+            width: 24px;
             position: absolute;
             background-position: 0 0; }
         .qq_twocol_list ul li .list_main .list_info {
           padding: 0 7px 5px;
           color: #000; }
           .qq_twocol_list ul li .list_main .list_info .list_tit {
-            font-size: 30px;
-            line-height: 18px;
+            font-size: 14px;
             white-space: normal;
             word-wrap: break-word; }
 
 header {
   display: flex;
   align-items: center;
-  height: 100px;
+  height: 44px;
   background: #31c27c; }
   header h1 {
     display: none; }
   header #logo {
-    height: 60px;
-    margin-left: 30px; }
+    height: 25px;
+    margin-left: 12.5px; }
+  header .show_player {
+    position: absolute;
+    display: inline-block;
+    right: 10px;
+    top: 8px;
+    height: 28px;
+    padding: 0 12px;
+    line-height: 28px;
+    border-radius: 99px;
+    font-size: 14px;
+    background: #149c5a;
+    color: #fff; }
 
 * {
   box-sizing: border-box; }
@@ -86,21 +96,22 @@ a {
     .qq-slider .qq-slider-item > a {
       display: block; }
       .qq-slider .qq-slider-item > a img {
-        width: 100%; }
+        width: 100%;
+        display: block; }
 
 .mod_nav {
   display: flex;
-  height: 60px; }
+  align-items: center; }
   .mod_nav a {
     flex: 1;
     display: block;
     position: relative;
-    height: 60px;
-    line-height: 60px;
+    height: 40px;
+    line-height: 40px;
     color: rgba(0, 0, 0, 0.6);
     overflow: hidden;
     text-align: center;
-    font-size: 40px; }
+    cursor: pointer; }
     .mod_nav a.current {
       color: #31c27c; }
     .mod_nav a.current::after {
@@ -110,8 +121,146 @@ a {
       bottom: 0;
       left: 0;
       right: 0;
-      height: 5px;
+      height: 2px;
       background: #31c27c; }
 
 .tab_content {
   display: none; }
+
+.player {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 9;
+  transition: 0.3s;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-100%); }
+  .player.show {
+    opacity: 1;
+    transform: translateY(0); }
+  .player .player_containerr {
+    z-index: 9;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.6); }
+  .player .player_background {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background-size: cover;
+    background-position: bottom center;
+    filter: blur(15px);
+    transform: scale(1.15); }
+  .player .player_header {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.1); }
+    .player .player_header .icon_action {
+      border: solid 1px #fff;
+      font-size: 12px;
+      border-radius: 40px;
+      padding: 5px;
+      display: block; }
+    .player .player_header .album_cover {
+      width: 80px;
+      height: 80px;
+      display: block;
+      margin-right: 15px; }
+    .player .player_header .song_info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      max-width: calc(100%-150px); }
+      .player .player_header .song_info .song_name {
+        font-size: 14px;
+        font-weight: normal;
+        color: #fff; }
+      .player .player_header .song_info .song_artist {
+        font-size: 12px;
+        color: #fff;
+        margin: 0; }
+  .player .player_lyrics {
+    flex: 1;
+    overflow: hidden;
+    margin: 36px 0 60px 0;
+    color: rgba(255, 255, 255, 0.6);
+    max-height: calc(100%-205px); }
+    .player .player_lyrics .player_lyrics_lines {
+      overflow: hidden;
+      transform: .5s; }
+    .player .player_lyrics .player_lyrics_line {
+      height: 42px;
+      line-height: 42px;
+      overflow: hidden;
+      padding: 0 15px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 16px;
+      color: #000000;
+      text-align: center; }
+    .player .player_lyrics .active {
+      color: #31c27c; }
+  .player .player_footer {
+    position: relative; }
+    .player .player_footer .icon_list {
+      width: 40px;
+      height: 40px;
+      right: 13px;
+      top: -40px;
+      position: absolute;
+      background-image: url(../images/sprite_play.png);
+      background-repeat: no-repeat;
+      background-size: 40px 380px;
+      background-position: 8px -250px; }
+    .player .player_footer .progress {
+      display: flex;
+      align-items: center; }
+    .player .player_footer .progress_bar {
+      flex: 1;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.2); }
+      .player .player_footer .progress_bar .progress_bar_progress {
+        width: 100%;
+        height: 2px;
+        transform: translateX(-50%);
+        background: #31c27c; }
+    .player .player_footer .progress_time {
+      top: 0;
+      z-index: 1;
+      width: 55px;
+      font-size: 12px;
+      color: #808080;
+      line-height: 40px;
+      text-align: center;
+      letter-spacing: 1px; }
+    .player .player_footer .actions {
+      height: 65px;
+      margin-top: 10px; }
+      .player .player_footer .actions .btn_download {
+        position: relative;
+        display: block;
+        height: 45px;
+        line-height: 45px;
+        margin: 0 50px;
+        padding: 0 55px;
+        overflow: hidden;
+        white-space: normal;
+        font-size: 20px;
+        color: #fff;
+        border-radius: 999px;
+        background-color: #31c27c;
+        text-align: center;
+        background-image: url(../images/sprite_play.png);
+        background-repeat: no-repeat;
+        background-size: 43px 380px;
+        background-position: 6px -321px; }
