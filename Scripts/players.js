@@ -48,7 +48,12 @@ class ProgressBar{
 	
 	//加载HTML
 	render(){
-		
+		this.$el.innerHTML=`
+		<div class="progress_time progress_elapsed"></div>
+		<div class="progress_bar">
+			<div class="progress_bar_progress"></div>
+		/div>
+		<div class="progress_time progress_duration"></div>`;
 	}
 	
 	//设定时间参数
@@ -68,16 +73,22 @@ class Musicplay{
 		this.$el=el;
 		this.$el.addEventListener('click',this);
 		this.$audio=this.createAudio();
+		this.lyrics=new lyricsplayer(this.$el.querySelector('.player_lyrics'),this.$audio);
+		this.progress=new ProgressBar(thsi.$el.querySelector('.progress'));
+		this.fetching=false;
 		
 	}
 	
 	createAudio(){
 		let audio=document.createElement('audio');
-		audio.id=``;
+		audio.id = `player-${Math.floor(Math.random() * 100)}-${+new Date()}`;
 		audio.addEventListener('ended',()=>{
 			this.$audio.play();
-			
+			this.lyrics.restart();
+			this.progress.restart();
 		})
+		document.body.appendChild(audio);
+		return audio;
 	}
 	
 	handleEvent(){
@@ -96,28 +107,65 @@ class Musicplay{
 	}
 	
 	onPlay(){
-		
+		if(this.fetching)return;
+		this.$audio.play();
+		this.lyrics.start();
+		this.progress.start();
+		event.target.classList.add('icon-pause')
+    	event.target.classList.remove('icon-play')
 	}
 	onPause(){
-		
+		this.$audio.pause();
+		this.lyrics.pause();
+		this.progress.pause();
+		event.target.classList.add('icon-play')
+    	event.target.classList.remove('icon-pause')
 	}
 	
 	play(options={}){
 		if(!options)return;
 		
-		this.$el.querySelector().innerText=options.songname;
-		this.$el.querySelector().innerText=options.artist;
+		this.$el.querySelector('.song_name').innerText=options.songname;
+		this.$el.querySelector('.song_artist').innerText=options.artist;
 		this.progress.reset(options.duration);
 		
-		let coverUrl=albumcoverUrl
+		let coverUrl=albumcoverUrl(options.albummid);
+		this.$el.querySelector('.album_cover').src=coverUrl;
+		this.$el.querySelector('.player_background').style.backgroundImage=`url(${coverUrl})`;
+		
+		if(options.songid){
+			this.songid=options.songid;
+			this.$audio.src=songUrl(this.songid);
+			this.fetching=true;
+			fetch(lyriciUrl(this.songid))
+				.then(res=>res.json())
+				.then(json=>json.lyric)
+				.then(text=>this.lyrics.reset(text))
+				.catch(()=>{})
+				.then(()=>this.fetching=false)
+		}
+		this.show();
+		
 	}
+	
+	show() {
+	    this.$el.classList.add('show')
+	    document.body.classList.add('noscroll')
+	  }
+
+	hide() {
+	    this.$el.classList.remove('show')
+	    document.body.classList.remove('noscroll')
+	}
+	
 }
 
 //歌词
 class lyricsplayer{
 	contructor(el,audio){
 		this.$el=el;
-		this.$el.innerHTML='';
+		this.$el.innerHTML='<div class="player-lyrics-lines"></div>';
+		this.$lines=this.$el.querySelector('.player_lyrics-lines');
 		this.$audio=audio;
 		this.text='';
 		this.index=0;
@@ -137,10 +185,18 @@ class lyricsplayer{
 	//
 	update(){
 		this.elapsed=Math.round(thi.$audio?this.$audio.currentTime:this.elapsed+1)
-		
-		
+		if(thsi.index===this.lyrics.length-1)return;
+		for(let i=this.index+1;i<this.lyrics.length;i++){
+			let seconds=this.this.getSeconds(this.lyrics[i]);
+			if(this.elapsed===seconds&&(!this.lyrics[i+1]||thsi.elapsed<this.lyrics[i+1])){
+				this.$lines.children[tshi.index].classList.remove('active');
+				this.$lines.children[i].classList.add('active');
+				this.index=i;
+				break;
+			}
+		}
 		if(this.index>2){
-			let y=-(this.index-2)*thsi.LINE_HEIGHT;
+			let y=-(this.index-2)*this.LINE_HEIGHT;
 			this.$lines.style.transform=`translateY(${y}px)`;
 		}
 		
@@ -148,22 +204,43 @@ class lyricsplayer{
 	}
 	//加载HTML
 	rander(){
-		
+		let html = this.lyrics.map(line => `
+	      <div class="player-lyrics-line">${line.slice(10)}</div>
+	    `).join('');
+    this.$lines.innerHTML = html;
 	}
 	
 	reset(){
 		this.pause();
 		this.index=0;
 		this.elapsed=0;
-		//[00:00:00]sjkjk
+		
+		this.$lines.style.transform=`translateY(0)`;
+		let $active=this.$lines.querySelector('.active');
+		if($active){
+			$active.classList.remove('active');
+		}
+		
 		if(text){
 			this.text=this.formatText(text)||'';
 			this.lyrics=this.text.match(/^\[\d{2}:\d{2}\.\d{2}\](.+)$/gm)||[];
 			if(this.lyrics.length) this.render();
 		}
 		
+		if(this.lyrics.length){
+			this.$lines.children[this.index].classList.add('active')
+		}
 		
 	}
+	
+	restart() {
+	    this.reset()
+	    this.start()
+	  }
+	
+	getSeconds(line) {
+	    return +line.replace(/^\[(\d{2}):(\d{2}).*/, (match, p1, p2) => 60 * (+p1) + (+p2))
+	  }
 
 	//添加歌词文本
 	formatText(text){
@@ -173,7 +250,7 @@ class lyricsplayer{
 	}
 	
 }
-
+LyricsPlayer.prototype.LINE_HEIGHT = 42
 
 
 

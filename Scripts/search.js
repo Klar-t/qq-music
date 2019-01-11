@@ -3,7 +3,7 @@ class Search{
 	constructor(el){
 		this.$el=el;
 		this.$input=this.$el.querySelector('#search');
-		this.$songs=
+		this.$songs=this.$el.querySelector('.song-list');
 		this.$input.addEventListener('keyup',this.onKeyup.bind(this));
 		this.keyword=''
 		this.page=1;
