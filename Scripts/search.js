@@ -37,11 +37,13 @@ class Search{
 		this.$songs.innerHTML='';
 	}
 	
-	search(keyword){
-		if(this.fetching) return;
+	search(keyword,page){
+		if(this.fetching||this.keyword) return;
+		if(this.keyword==keyword&&this.songs[page||this.page])return ;
+		if(this.keyword!==keyword) this.reset();
 		this.keyword=keyword;
-		this.fetching=ture;
-		fetch()
+		this.loading()
+		fetch(searchUrl(this.keyword,page||this.page))
 		.then(res=>res.json())
 		.then(json=>{
 			this.page=json.data.song.curpage;
@@ -49,11 +51,14 @@ class Search{
 			this.songs.push(...json.data.song.list)
 			return json.data.song.list;
 		})
-		.then(songs=.thsi.append(songs))
+		.then(songs=.this.append(songs))
 		.then(()=>this.fetching=false)
 		.catch(()=>this.fetching=false)
 	}
-	
+	loading(){
+		this.fetching=true;
+		this.$el.querySelector('.search_loading')
+	}
 	
 	append(songs){
 		let html=songs.map(song=>
