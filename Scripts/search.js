@@ -61,11 +61,31 @@ class Search{
 	}
 	
 	append(songs){
-		let html=songs.map(song=>
-			``
-		).join('')
-		this.$songs.insertAdjacentHTML(html);
-		//this.$song.innerHtml+=html;
+    let html = songs.map(song => {
+      let artist = song.singer.map(s => s.name).join(' ')
+      return `
+        <a class="song_item"
+           href="#player?artist=${artist}&songid=${song.songid}&songname=${song.songname}&albummid=${song.albummid}&duration=${song.interval}">
+          <i class="icon icon-music"></i>
+          <div class="song_name ellipsis">${song.songname}</div>
+          <div class="song_artist ellipsis">${artist}</div>
+        </a>`}).join('')
+    this.$songs.insertAdjacentHTML('beforeend', html);
+  }
+	}
+	
+	
+	done(){
+		this.fetching=true;
+		if(this.nomore){
+			this.$el.querySelector('.loading_icon').style.display='none';
+			this.$el.querySelector('.loading_text').style.display='none';
+			this.$el.querySelector('.loading_done').style.display='block';
+			this.$el.querySelector('.search_loading').classList.add('show');
+			
+		}else{
+			this.$el.querySelector('.search_loading').classList.remove('show');
+		}
 	}
 	
 }
