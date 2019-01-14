@@ -1,7 +1,7 @@
 
 
 
- function lazyload(images){
+ export function lazyload(images){
  	let imgs=[].slice.call(images);
  	
 //IntersectionObserver ES6新API

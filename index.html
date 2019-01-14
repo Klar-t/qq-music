@@ -5,7 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<title>QQ 音乐</title>
-		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="dist/app.css"/>
 	</head>
 	<body>
 		<header>
@@ -194,8 +194,7 @@
 			</div>
 			<div class="player_background"></div>
 		</div>
-		<script src="Scripts/slider.js" type="text/javascript" charset="utf-8"></script>
-		<script src="Scripts/Tab.js" type="text/javascript" charset="utf-8"></script>
-		<script src="Scripts/app.js" type="text/javascript" charset="utf-8"></script>
+		<script type="module" src="Scripts/app.js"></script>
+		<script nomodule src="dist/app.js"></script>  <!-- Webpack 打包后的代码 -->
 	</body>
 </html>

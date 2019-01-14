@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dist": "node-sass --output-style compressed scss/app.scss > dist/app.css && webpack -p"
   },
   "repository": {
     "type": "git",
@@ -12,12 +12,22 @@
   },
   "keywords": [],
   "author": {
-  	"name":"Klart",
-  	"email":"809468814@qq.com"
+    "name": "Klart",
+    "email": "809468814@qq.com"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Klar-t/qq-music/issues"
   },
-  "homepage": "https://github.com/Klar-t/qq-music#readme"
+  "homepage": "https://github.com/Klar-t/qq-music#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  },
+  "dependencies": {
+    "autoprefixer-cli": "^1.0.0"
+  }
 }

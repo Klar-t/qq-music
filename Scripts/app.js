@@ -41,4 +41,25 @@
 			songList:songlist
 		})
 	}
+
+	let player = new MusicPlayer(document.querySelector('#player'))
+	document.querySelector('.show-player').addEventListener('click', () => {
+	  player.show()
+	})
+	function onHashChange() {
+	  let hash = location.hash
+	  if (/^#player\?.+/.test(hash)) {
+	    let matches = hash.slice(hash.indexOf('?') + 1).match(/(\w+)=([^&]+)/g)
+	    let options = matches && matches.reduce((res, cur) => {
+	      let arr = cur.split('=')
+	      res[arr[0]] = decodeURIComponent(arr[1])
+	      return res
+	    }, {})
+	    player.play(options)
+	  } else {
+	    player.hide()
+	  }
+	}
+	
+
 })()

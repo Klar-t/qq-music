@@ -1,5 +1,5 @@
 //进度条
-class ProgressBar{
+export class ProgressBar{
 	constructor(el,duration,start){
 		this.$el=el;
 		this.elapsed=0;//进度条左侧时间
@@ -68,7 +68,7 @@ class ProgressBar{
 	
 }
 //播放音乐
-class Musicplay{
+export class Musicplay{
 	constructor(el){
 		this.$el=el;
 		this.$el.addEventListener('click',this);
@@ -161,7 +161,7 @@ class Musicplay{
 }
 
 //歌词
-class lyricsplayer{
+export class lyricsplayer{
 	contructor(el,audio){
 		this.$el=el;
 		this.$el.innerHTML='<div class="player-lyrics-lines"></div>';

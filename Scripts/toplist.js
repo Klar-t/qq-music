@@ -1,4 +1,4 @@
-class TopList {
+export class Toplist {
   constructor(el) {
     this.$el = el
   }

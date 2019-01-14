@@ -1,5 +1,5 @@
 
-class Search{
+export class Search{
 	constructor(el){
 		this.$el=el;
 		this.$input=this.$el.querySelector('#search');
