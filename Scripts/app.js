@@ -1,6 +1,10 @@
-(function(){
-	
-	fetch('/json/rec.json')
+
+import './tab.js'
+import { Search } from './search.js'
+import { TopList } from './toplist.js'
+import { MusicPlayer } from './player.js'
+
+	fetch('./json/rec.json')
 	.then(res=>res.json())
 	.then(render)
 	
@@ -42,7 +46,7 @@
 		})
 	}
 
-	let player = new MusicPlayer(document.querySelector('#player'))
+	let player = new MusicPlayer(document.querySelector('#player'));
 	document.querySelector('.show-player').addEventListener('click', () => {
 	  player.show()
 	})
@@ -60,6 +64,4 @@
 	    player.hide()
 	  }
 	}
-	
 
-})()
